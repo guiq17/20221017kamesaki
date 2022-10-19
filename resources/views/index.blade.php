@@ -10,7 +10,7 @@
 </head>
 <body>
   <h1>Todo List</h1>
-  <form action="/" method="POST">
+  <form action="/add" method="post">
     @csrf
     <input type="text" name="content">
     <button type="button">追加</button>
@@ -22,12 +22,13 @@
       <th>更新</th>
       <th>削除</th>
     </tr>
+    @foreach($todos as $todo)
     <tr>
       <td>
-        {{$request->created_at}}
+        {{$todo->created_at}}
       </td>
       <td>
-        <input type="text" name="content" value="{{$content}}">
+        <input type="text" name="content" value={{$todo->content}}>
       </td>
       <td>
         <button>更新</button>
@@ -36,6 +37,7 @@
         <button>削除</button>
       </td>
     </tr>
+    @endforeach
   </table>
 </body>
 </html>

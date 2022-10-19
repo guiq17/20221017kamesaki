@@ -19,6 +19,7 @@ class TodoController extends Controller
     public function create(TodoRequest $request)
     {
         $form = $request->content;
+        dd($form);
         Todo::create([
             'content' => $form,
         ]);

@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Todo;
 use App\Http\Requests\TodoRequest;
+use Validator;
 
 class TodoController extends Controller
 {
+    public function post(TodoRequest $request)
+    {
+        return redirect('/');
+    }
+
     public function index()
     {
         $todos = Todo::all();
@@ -27,6 +33,9 @@ class TodoController extends Controller
 
     public function update(Request $request)
     {
+        Validator::make($request->all(), [
+            'content' => 'required',
+        ])->validate();
         Todo::where('id', $request->id)->update(['content' => $request->content]);
         return redirect('/');
     }

@@ -13,13 +13,11 @@
     <div class="card">
       <p class="title mb-15">Todo List</p>
       <div class="todo">
-        @if($errors->any())
+        @error('content')
         <ul>
-          @foreach($errors->all() as $error)
-          <li>{{$error}}</li>
-          @endforeach
+          <li>{{$message}}</li>
         </ul>
-        @endif
+        @enderror
         <form action="/add" class="flex between mb-30" method="post">
           @csrf
           <input type="text" class="input-add" name="content">

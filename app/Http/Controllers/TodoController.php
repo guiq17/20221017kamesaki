@@ -9,11 +9,6 @@ use Validator;
 
 class TodoController extends Controller
 {
-    public function post(TodoRequest $request)
-    {
-        return redirect('/');
-    }
-
     public function index()
     {
         $todos = Todo::all();
@@ -31,7 +26,7 @@ class TodoController extends Controller
         return redirect('/');
     }
 
-    public function update(Request $request)
+    public function update(Todorequest $request)
     {
         Validator::make($request->all(), [
             'content' => 'required',
